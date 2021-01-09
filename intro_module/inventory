@@ -1,7 +1,7 @@
 [mso:vars]
 username=admin
-password=C1sco!234567
+password=ins3965!ins3965!
 ansible_python_interpreter="/usr/bin/env python"
 
 [mso]
-10.10.20.60
+10.23.248.82
