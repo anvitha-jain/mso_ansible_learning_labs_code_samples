@@ -10,7 +10,7 @@
 
   tasks:
     - name: ENSURE APPLICATIONS TENANT EXISTS
-      mso_tenant:
+      cisco.mso.mso_tenant:
         host: "{{ ansible_host }}"
         username: "{{ username }}"
         password: "{{ password }}"

@@ -6,7 +6,7 @@
 
   tasks:
     - name: ENSURE SCHEMA FILTERS EXIST
-      mso_schema_template_filter_entry:
+      cisco.mso.mso_schema_template_filter_entry:
         host: "{{ ansible_host }}"
         username: "{{ username }}"
         password: "{{ password }}"
@@ -21,7 +21,7 @@
         entry: "{{ mso_entry | default('https') }}"
 
     - name: ENSURE SCHEMA CONTRACTS EXIST
-      mso_schema_template_contract_filter:
+      cisco.mso.mso_schema_template_contract_filter:
         host: "{{ ansible_host }}"
         username: "{{ username }}"
         password: "{{ password }}"
@@ -36,5 +36,5 @@
         filter_schema: "{{ mso_schema | default('test_schema') }}"
         filter_template: "Template_1"
         contract: "{{ mso_sql_contract | default('web') }}"
-        contract_filter_type: "{{ contract_filter_type | default('both-way') }}"
+        contract_filter_type: "{{ contract_filter_type | default('one-way') }}"
         filter_type: "{{ filter_type | default('consumer-to-provider') }}"

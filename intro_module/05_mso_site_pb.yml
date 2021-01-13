@@ -9,8 +9,8 @@
       private: no
 
   tasks:
-    - name: ENSURE SCHEMA WITH TEMPLATE EXISTS
-      cisco.mso.mso_schema_template:
+    - name: ENSURE SITE EXISTS
+      cisco.mso.mso_site:
         host: "{{ ansible_host }}"
         username: "{{ username }}"
         password: "{{ password }}"
@@ -19,12 +19,31 @@
         use_ssl: True
         use_proxy: True
         output_level: info
-        schema: "{{ mso_schema | default('test_schema') }}"
+        site: "{{ mso_site | default('test_site') }}"
+        apic_username: "{{ apic_username }}"
+        apic_password: "{{ apic_password }}"
+        apic_site_id: "{{ apic_site_id | default(101) }}"
+        urls:
+        - https://{{ apic_hostname }}
+        location:
+          latitude: 50.887318
+          longitude: 4.447084
+
+    - name: ENSURE SITE IS ASSOCIATED TO A TENANT
+      cisco.mso.mso_tenant_site:
+        host: "{{ ansible_host }}"
+        username: "{{ username }}"
+        password: "{{ password }}"
+        state: "present"
+        validate_certs: False
+        use_ssl: True
+        use_proxy: True
+        output_level: info
         tenant: "{{ tenant }}"
-        template: "Template_1"
+        site: "{{ mso_site | default('test_site') }}"
 
-    - name: ENSURE SCHEMA WITH VRF EXISTS
-      cisco.mso.mso_schema_template_vrf:
+    - name: ENSURE SITE IS ASSOCIATED WITH SCHEMA
+      cisco.mso.mso_schema_site:
         host: "{{ ansible_host }}"
         username: "{{ username }}"
         password: "{{ password }}"
@@ -35,22 +54,18 @@
         output_level: info
         schema: "{{ mso_schema | default('test_schema') }}"
         template: "Template_1"
-        vrf: "{{ vrf | default('mso_vrf') }}"
+        site: "{{ mso_site | default('test_site') }}"
 
-    - name: ENSURE SCHEMA WITH BRIDGE DOMAIN EXISTS
-      cisco.mso.mso_schema_template_bd:
+    - name: ENSURE TEMPLATE IS DEPLOYED TO SITE
+      cisco.mso.mso_schema_template_deploy:
         host: "{{ ansible_host }}"
         username: "{{ username }}"
         password: "{{ password }}"
-        state: "present"
+        state: "deploy"
         validate_certs: False
         use_ssl: True
         use_proxy: True
         output_level: info
         schema: "{{ mso_schema | default('test_schema') }}"
         template: "Template_1"
-        bd: "{{ mso_bd | default('mso_bd') }}"
-        vrf:
-          name: "{{ vrf | default('mso_vrf') }}"
-          schema: "{{ mso_schema | default('test_schema') }}"
-          template: "Template_1"
+        site: "{{ mso_site | default('test_site') }}"

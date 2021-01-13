@@ -6,7 +6,7 @@
 
   tasks:
     - name: ENSURE APPLICATION EXISTS
-      mso_schema_template_anp:
+      cisco.mso.mso_schema_template_anp:
         host: "{{ ansible_host }}"
         username: "{{ username }}"
         password: "{{ password }}"
@@ -20,7 +20,7 @@
         anp: "{{ anp | default('intranet') }}"
 
     - name: ENSURE APPLICATION EPGS EXISTS
-      mso_schema_template_anp_epg:
+      cisco.mso.mso_schema_template_anp_epg:
         host: "{{ ansible_host }}"
         username: "{{ username }}"
         password: "{{ password }}"
@@ -39,7 +39,7 @@
           template: "Template_1"
 
     - name: ENSURE EPG IS ASSOCIATED TO CONTRACTS
-      mso_schema_template_anp_epg_contract:
+      cisco.mso.mso_schema_template_anp_epg_contract:
         host: "{{ ansible_host }}"
         username: "{{ username }}"
         password: "{{ password }}"
