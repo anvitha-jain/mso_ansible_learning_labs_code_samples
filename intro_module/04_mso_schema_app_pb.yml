@@ -15,7 +15,7 @@
         use_ssl: True
         use_proxy: True
         output_level: info
-        schema: "{{ mso_schema | default('test_schema') }}"
+        schema: "{{ schema | default('test_schema') }}"
         template: "Template_1"
         anp: "{{ anp | default('intranet') }}"
 
@@ -29,7 +29,7 @@
         use_ssl: True
         use_proxy: True
         output_level: info
-        schema: "{{ mso_schema | default('test_schema') }}"
+        schema: "{{ schema | default('test_schema') }}"
         template: "Template_1"
         anp: "{{ anp | default('intranet') }}"
         epg: "{{ epg | default('mso_epg') }}"
@@ -48,7 +48,7 @@
         use_ssl: True
         use_proxy: True
         output_level: info
-        schema: "{{ mso_schema | default('test_schema') }}"
+        schema: "{{ schema | default('test_schema') }}"
         template: "Template_1"
         anp: "{{ anp | default('intranet') }}"
         epg: "{{ epg | default('mso_epg') }}"
