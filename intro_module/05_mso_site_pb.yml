@@ -19,7 +19,7 @@
         use_ssl: True
         use_proxy: True
         output_level: info
-        site: "{{ mso_site | default('test_site') }}"
+        site: "{{ site | default('test_site') }}"
         apic_username: "{{ apic_username }}"
         apic_password: "{{ apic_password }}"
         apic_site_id: "{{ apic_site_id | default(101) }}"
@@ -40,7 +40,7 @@
         use_proxy: True
         output_level: info
         tenant: "{{ tenant }}"
-        site: "{{ mso_site | default('test_site') }}"
+        site: "{{ site | default('test_site') }}"
 
     - name: ENSURE SITE IS ASSOCIATED WITH SCHEMA
       cisco.mso.mso_schema_site:
@@ -54,7 +54,7 @@
         output_level: info
         schema: "{{ mso_schema | default('test_schema') }}"
         template: "Template_1"
-        site: "{{ mso_site | default('test_site') }}"
+        site: "{{ site | default('test_site') }}"
 
     - name: ENSURE TEMPLATE IS DEPLOYED TO SITE
       cisco.mso.mso_schema_template_deploy:
@@ -68,4 +68,4 @@
         output_level: info
         schema: "{{ mso_schema | default('test_schema') }}"
         template: "Template_1"
-        site: "{{ mso_site | default('test_site') }}"
+        site: "{{ site | default('test_site') }}"
