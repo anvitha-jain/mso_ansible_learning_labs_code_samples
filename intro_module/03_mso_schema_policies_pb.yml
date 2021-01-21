@@ -15,7 +15,7 @@
         use_ssl: True
         use_proxy: True
         output_level: info
-        schema: "{{ mso_schema | default('test_schema') }}"
+        schema: "{{ schema | default('test_schema') }}"
         template: "Template_1"
         filter: "{{ mso_filter | default('https') }}"
         entry: "{{ mso_entry | default('https') }}"
@@ -30,10 +30,10 @@
         use_ssl: True
         use_proxy: True
         output_level: info
-        schema: "{{ mso_schema | default('test_schema') }}"
+        schema: "{{ schema | default('test_schema') }}"
         template: "Template_1"
         filter: "{{ mso_filter | default('https') }}"
-        filter_schema: "{{ mso_schema | default('test_schema') }}"
+        filter_schema: "{{ schema | default('test_schema') }}"
         filter_template: "Template_1"
         contract: "{{ mso_sql_contract | default('web') }}"
         contract_filter_type: "{{ contract_filter_type | default('one-way') }}"
